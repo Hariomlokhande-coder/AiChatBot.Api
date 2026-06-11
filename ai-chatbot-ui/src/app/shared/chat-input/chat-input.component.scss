@@ -1,0 +1,75 @@
+.input-composer {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-user-msg);
+  border-radius: 26px;
+  padding: 8px 12px;
+  gap: 8px;
+}
+
+.textarea-wrapper {
+  flex: 1;
+  display: flex;
+}
+
+.composer-textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.98rem;
+  resize: none;
+  outline: none;
+  max-height: 160px;
+  padding: 6px 4px;
+  line-height: 1.5;
+}
+
+.composer-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.icon-btn:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-main);
+}
+
+.composer-send-btn {
+  background-color: var(--text-main);
+  color: var(--bg-chat);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.composer-send-btn:hover:not(:disabled) {
+  background-color: var(--text-main);
+  opacity: 0.85;
+}
+
+.composer-send-btn:disabled {
+  background-color: transparent;
+  color: var(--border-color);
+  cursor: not-allowed;
+}

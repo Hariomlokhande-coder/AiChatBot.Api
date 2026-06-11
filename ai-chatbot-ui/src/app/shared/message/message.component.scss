@@ -1,0 +1,39 @@
+.message-row {
+  display: flex;
+  width: 100%;
+}
+
+.message-row.user {
+  justify-content: flex-end;
+}
+
+.message-row.ai {
+  justify-content: flex-start;
+}
+
+/* Bubbles */
+.bubble-container {
+  max-width: 70%;
+}
+
+.message-content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text-main);
+}
+
+/* User Bubble: Light pill aligned to the right */
+.message-row.user .message-content {
+  background-color: var(--bg-user-msg);
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+/* AI Message: Plain text on the left without background container */
+.message-row.ai .message-content {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}

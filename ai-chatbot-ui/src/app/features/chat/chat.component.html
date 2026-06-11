@@ -1,0 +1,86 @@
+<div class="chat-container">
+  <!-- Sidebar Component -->
+  <app-sidebar 
+    [activeConversationId]="conversationId()" 
+    (conversationSelected)="onConversationSelected($event)" 
+    (createNew)="startNewConversation()">
+  </app-sidebar>
+
+  <!-- Main Chat Area -->
+  <main class="chat-main">
+    <!-- Header -->
+    <header class="chat-header">
+      <div class="header-left">
+        <button class="header-dropdown-btn">
+          CHATBOT
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="dropdown-chevron">
+            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="header-right">
+        <!-- Optional top right actions -->
+      </div>
+    </header>
+
+    <!-- Message Feed -->
+    <section class="feed-container">
+
+
+      <div class="error-banner" *ngIf="error()">
+        <span>{{ error() }}</span>
+      </div>
+
+      <div id="chat-messages" class="messages-list">
+        <ng-container *ngIf="messages().length > 0; else emptyDashboard">
+          <div *ngIf="hasMore()" class="load-more-container">
+            <button 
+              class="load-more-btn" 
+              [disabled]="loadingMore()" 
+              (click)="loadMore()">
+              <span *ngIf="loadingMore()" class="mini-spinner"></span>
+              {{ loadingMore() ? 'Loading older messages...' : 'Load older messages' }}
+            </button>
+          </div>
+
+          <app-message 
+            *ngFor="let item of messages()" 
+            [role]="item.role" 
+            [text]="item.text">
+          </app-message>
+        </ng-container>
+
+        <!-- Empty State Dashboard matching reference screenshot -->
+        <ng-template #emptyDashboard>
+          <div class="dashboard-placeholder">
+            <div class="logo-sphere">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="chatbot-logo-svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <h2>How can I help you today?</h2>
+          </div>
+        </ng-template>
+
+        <!-- Typing Loading Indicator -->
+        <div *ngIf="typing()" class="typing-indicator-bubble">
+          <div class="typing-animation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chat Input Footer -->
+    <footer class="footer-input">
+      <app-chat-input 
+        [disabled]="sending() || loading()" 
+        (send)="onInputSend($event)">
+      </app-chat-input>
+      <p class="copyright-label">CHATBOT can make mistakes. Check important info.</p>
+    </footer>
+  </main>
+</div>

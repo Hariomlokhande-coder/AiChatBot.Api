@@ -1,0 +1,72 @@
+/* Custom Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Reset and variables matching official CHATBOT Light Theme */
+:root {
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Color Palette - Minimal Light Mode */
+  --bg-app: #f9f9f9;
+  --bg-sidebar: #f9f9f9;
+  --bg-chat: #ffffff;
+  --bg-card: #ffffff;
+  --bg-active: #ececec;
+  --bg-hover: #f0f0f0;
+  
+  /* User bubble: dark gray pill with white text. AI message: plain text without bubble container */
+  --bg-user-msg: #f4f4f4;
+  --bg-ai-msg: transparent;
+  
+  --border-color: #e3e3e3;
+  --border-focus: #b4b4b4;
+  
+  --text-main: #0d0d0d;
+  --text-muted: #676767;
+  --text-user: #0d0d0d;
+  --text-ai: #0d0d0d;
+  
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-glow: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-chat);
+  color: var(--text-main);
+  font-family: var(--font-primary);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e3e3e3;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cdcdcd;
+}
+
+/* Transitions */
+a, button, input, textarea, li {
+  transition: all 0.15s ease-in-out;
+}
